@@ -56,6 +56,17 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
+exports.getMyProducts = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const myProducts = await Product.find({ addedBy: userId });
+    res.status(200).json(myProducts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
 // edit 
 exports.editProduct = async (req, res) => {
     try {

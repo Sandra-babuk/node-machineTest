@@ -19,6 +19,8 @@ router.get('/getall-brand', brandController.getAllBrands);
 
 router.post('/add-product', jwtMiddleware, productController.addProduct);
 router.get('/get-product', productController.getAllProducts);
+// Get only logged-in user's products
+router.get('/my-products', jwtMiddleware, productController.getMyProducts);
 router.put('/edit/:id', jwtMiddleware, productController.editProduct)
 router.delete('/delete/:id', jwtMiddleware, productController.deleteProduct)
 
